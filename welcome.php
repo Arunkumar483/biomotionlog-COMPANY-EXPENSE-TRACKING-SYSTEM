@@ -34,6 +34,7 @@
 			<a href="submit.php" class="btn btn-block btn-outline-danger">ADD DATA ENTRY</a>
 			<a href="logout.php" class="btn btn-block btn-outline-danger">Sign Out</a>
 			<a href="query123.php" class="btn btn-block btn-outline-danger">Other queries</a>
+			<a href="fetchdisplay.php" class="btn btn-block btn-outline-danger">VIEW MY ENTRIES</a>
 		</section>
 	</main>
 	
