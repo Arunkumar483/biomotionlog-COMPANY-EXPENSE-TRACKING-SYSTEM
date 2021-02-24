@@ -6,6 +6,8 @@
 		header('location: index.php');
 		exit;
 	}
+	$a=$_SESSION['username'];
+	echo $a;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +69,12 @@
                             <label>Description</label>
                             <input type="text" name="description" class="form-control">
                         </div>
-                        
+                        <div class="form-group">
+                            <label>USER</label>
+                            <input type="text" name="user" class="form-control" value="<?php echo htmlspecialchars($a);?>" />
+                               
+                            
+                        </div>
                         <input type="submit" class="btn btn-primary" name="submit" value="Submit">
                     </form>
                 </div>
