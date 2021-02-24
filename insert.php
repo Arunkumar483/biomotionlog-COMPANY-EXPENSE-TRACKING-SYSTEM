@@ -36,8 +36,9 @@ if(isset($_POST['submit']))
      $amount = $_POST['amount'];
      $description = $_POST['description'];
      $entrytype = $_POST['entrytype'];
-     $insert= mysqli_query($mysql_db,"INSERT INTO `entry` (`pid`,`type`,`amount`,`description`,`entrytype`)
-     VALUES ('$pid','$type','$amount','$description','$entrytype')");
+     $user = $_POST['user'];
+     $insert= mysqli_query($mysql_db,"INSERT INTO `entry` (`pid`,`user`,`type`,`amount`,`description`,`entrytype`)
+     VALUES ('$pid','$user','$type','$amount','$description','$entrytype')");
      if(!$insert)
     {
         echo mysqli_error();
@@ -51,10 +52,11 @@ if(isset($_POST['submit']))
 }
 ?>
 <body> <br><br>
-<h5>Have another record? <br><br><a href="submit.php"><br><button  id="button1">SUBMIT NEXT ENTRY</button></a></h5>
+<h5>Have another record? <br><br><a href="submit.php"><br><button  id="button1">ADD NEXT ENTRY</button></a></h5>
 <br><br>
 <h5>Filled all entries?<a href="welcome.php"><br><br><br>
-<button  id="button2">FINISH</button></a></h5>
+<button  id="button2">GO TO DASHBOARD</button></a></h5>
+<h5>Filled all entries?<a href="logout.php"><br><br><br>
+<button  id="button3">LOG OUT</button></a></h5>
 
 </html>
-
