@@ -90,7 +90,7 @@
 				// Attempt to execute
 				if ($stmt->execute()) {
 					// Redirect to login page
-					header('location: ./index.php');
+					header('location: test.php');
 					// echo "Will  redirect to login page";
 				} else {
 					echo "Something went wrong. Try signing in again.";
@@ -148,7 +148,6 @@
         			<input type="submit" class="btn btn-block btn-outline-success" value="Submit">
         			<input type="reset" class="btn btn-block btn-outline-primary" value="Reset">
         		</div>
-        		<p>Already have an account? <a href="index.php">Login here</a>.</p>
         	</form>
 		</section>
 	</main>
