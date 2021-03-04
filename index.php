@@ -124,6 +124,7 @@
               <input type="submit" class="btn btn-block btn-outline-primary" value="login">
             </div>
             <p>Don't have an account? <a href="register.php">Sign in</a>.</p>
+            <p>Are you an admin? <a href="adminlogin.php">Admin Login</a>.</p>
           </form>
     </section>
   </main>
