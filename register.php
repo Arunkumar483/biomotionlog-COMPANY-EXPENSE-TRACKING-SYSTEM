@@ -111,18 +111,28 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign in</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous"><style>
-  
+       .cont{
+	border:1px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	margin-top:20px;
+	width:75vw;
+	background:white;
+}
+body{
+	background:#b2d4d9;
+}
         .wrapper{ 
         	width: 500px; 
         	padding: 20px; 
         }
         .wrapper h2 {text-align: center}
         .wrapper form .form-group span {color: red;}
+
 	</style>
 </head>
 <body>
 	<main>
-		<section class="container wrapper">
+		<section class="container wrapper cont">
 			<h2 class="display-4 pt-3">Sign Up</h2>
         	<p class="text-center">Please fill in your credentials.</p>
         	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
