@@ -19,18 +19,30 @@
         }
         .wrapper h2 {text-align: center}
         .wrapper form .form-group span {color: blue;}
+        .cont{
+	border:1px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	margin-top:20px;
+	width:80vw;
+	margin:auto;
+	margin-top:7vh;
+	background:white;
+}
+body{
+	background:#b2d4d9;
+}
         
 	</style>
 </head>
 <body>
     
 	<main>
-		<section class="container wrapper">
+		<section class="container wrapper cont">
 			<div class="page-header">
 				<h4 class="display-5">Welcome home admin <h3><?php echo $_SESSION['adminname']; ?></h3></h4>
 			</div>
 
-			<a href="adminpassreset.php" class="btn btn-block btn-outline-warning">Reset Password</a>
+			<a href="adminpassreset.php" class="btn btn-block btn-outline-danger">Reset Password</a>
 			<a href="register.php" class="btn btn-block btn-outline-danger">ADD USER</a>
 			<a href="adminlogout.php" class="btn btn-block btn-outline-danger">Sign Out</a>
 			
