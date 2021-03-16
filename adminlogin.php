@@ -108,30 +108,44 @@
     }
     .wrapper h2 {text-align: center}
     .wrapper form .form-group span {color: red;}
+    .cont{
+	border:1px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	margin-top:20px;
+	width:80vw;
+	margin:auto;
+	margin-top:7vh;
+	background:white;
+}
+.butt{
+    width:25vw;
+}
+body{
+	background:#b2d4d9;
+}
   </style>
 </head>
 <body>
   <main>
-    <section class="container wrapper">
-      <h2 class="display-4 pt-3">Login</h2>
-          <p class="text-center">Please fill this form to create an account.</p>
+    <section class="container wrapper cont">
+      <h2 class="display-4 pt-3"><strong>Admin Login</strong></h2><br>
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group <?php (!empty($adminname_err))?'has_error':'';?>">
-              <label for="adminname">adminname</label>
+              <label for="adminname"><b>adminname</b></label>
               <input type="text" name="adminname" id="adminname" class="form-control" value="<?php echo $adminname ?>">
               <span class="help-block"><?php echo $adminname_err;?></span>
             </div>
 
             <div class="form-group <?php (!empty($password_err))?'has_error':'';?>">
-              <label for="password">Password</label>
+              <label for="password"><b>Password</b></label>
               <input type="password" name="password" id="password" class="form-control" value="<?php echo $password ?>">
               <span class="help-block"><?php echo $password_err;?></span>
             </div>
 
             <div class="form-group">
-              <input type="submit" class="btn btn-block btn-outline-primary" value="login">
+              <center><input type="submit" class="btn btn-outline-primary butt" value="login"></center>
             </div>
-            <p>Don't have an account? <a href="adminsignup.php">Sign in</a>.</p>
+            <p>Go to <a href="index.php">Home</a>.</p>
           </form>
     </section>
   </main>
