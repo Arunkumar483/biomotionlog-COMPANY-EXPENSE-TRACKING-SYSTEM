@@ -24,6 +24,19 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+    .cont{
+    border:1px solid black;
+    box-shadow: 0px 1px 2px 1px;
+    margin-top:20px;
+    width:80vw;
+    margin:auto;
+    margin-top:20px;
+        background:white;
+        text-align:center;
+    }
+    body{
+        background:#80ccff;
+    }
     </style>
 </head>
 <body>
@@ -46,17 +59,17 @@ if(isset($_POST['submit']))
     else
     {   echo "<br>";
         echo "<br>";
-        echo "<h3><strong>Records added successfully.</strong></h3>";
+        echo "<h3><strong><center>Records added successfully.</center></strong></h3>";
     }
      mysqli_close($mysql_db);
 }
 ?>
-<body> <br><br>
-<h5>Have another record? <br><br><a href="submit.php"><br><button  id="button1">ADD NEXT ENTRY</button></a></h5>
+<body> <div class="cont"><br><br>
+<h5>Have another record? <br><br><a href="submit.php"><br><button class="btn btn-primary"  id="button1">ADD NEXT ENTRY</button></a></h5>
 <br><br>
-<h5>Filled all entries?<a href="welcome.php"><br><br><br>
-<button  id="button2">GO TO DASHBOARD</button></a></h5>
+<h5>Filled all entries?<a href="welcome.php"><br><br>
+<button class="btn btn-success" id="button2">GO TO DASHBOARD</button></a></h5><br><br>
 <h5>Filled all entries?<a href="logout.php"><br><br><br>
-<button  id="button3">LOG OUT</button></a></h5>
+<button class="btn btn-danger" id="button3">LOG OUT</button></a></h5><br><br></div>
 
 </html>
