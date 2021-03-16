@@ -4,29 +4,29 @@
 
 
 	// Define variables and initialize with empty values
-	$adminname = $password = $confirm_password = "";
+	$username = $password = $confirm_password = "";
 
-	$adminname_err = $password_err = $confirm_password_err = "";
+	$username_err = $password_err = $confirm_password_err = "";
 
 	// Process submitted form data
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-		// Check if adminname is empty
-		if (empty(trim($_POST['adminname']))) {
-			$adminname_err = "Please enter a adminname.";
+		// Check if username is empty
+		if (empty(trim($_POST['username']))) {
+			$username_err = "Please enter a username.";
 
-			// Check if adminname already exist
+			// Check if username already exist
 		} else {
 
 			// Prepare a select statement
-			$sql = 'SELECT adminid FROM admins WHERE adminname = ?';
+			$sql = 'SELECT id FROM users WHERE username = ?';
 
 			if ($stmt = $mysql_db->prepare($sql)) {
 				// Set parmater
-				$param_adminname = trim($_POST['adminname']);
+				$param_username = trim($_POST['username']);
 
 				// Bind param variable to prepares statement
-				$stmt->bind_param('s', $param_adminname);
+				$stmt->bind_param('s', $param_username);
 
 				// Attempt to execute statement
 				if ($stmt->execute()) {
@@ -35,12 +35,12 @@
 					$stmt->store_result();
 
 					if ($stmt->num_rows == 1) {
-						$adminname_err = 'This adminname is already taken.';
+						$username_err = 'This username is already taken.';
 					} else {
-						$adminname = trim($_POST['adminname']);
+						$username = trim($_POST['username']);
 					}
 				} else {
-					echo "Oops! ${$adminname}, something went wrong. Please try again later.";
+					echo "Oops! ${$username}, something went wrong. Please try again later.";
 				}
 
 				// Close statement
@@ -52,7 +52,7 @@
 			}
 		}
 
-		// Valadminidate password
+		// Validate password
 	    if(empty(trim($_POST["password"]))){
 	        $password_err = "Please enter a password.";     
 	    } elseif(strlen(trim($_POST["password"])) < 6){
@@ -61,36 +61,36 @@
 	        $password = trim($_POST["password"]);
 	    }
     
-	    // Valadminidate confirm password
+	    // Validate confirm password
 	    if(empty(trim($_POST["confirm_password"]))){
 	        $confirm_password_err = "Please confirm password.";     
 	    } else{
 	        $confirm_password = trim($_POST["confirm_password"]);
 	        if(empty($password_err) && ($password != $confirm_password)){
-	            $confirm_password_err = "Password dadminid not match.";
+	            $confirm_password_err = "Password did not match.";
 	        }
 	    }
 
 	    // Check input error before inserting into database
 
-	    if (empty($adminname_err) && empty($password_err) && empty($confirm_err)) {
+	    if (empty($username_err) && empty($password_err) && empty($confirm_err)) {
 
 	    	// Prepare insert statement
-			$sql = 'INSERT INTO admins (adminname, password) VALUES (?,?)';
+			$sql = 'INSERT INTO users (username, password) VALUES (?,?)';
 
 			if ($stmt = $mysql_db->prepare($sql)) {
 
 				// Set parmater
-				$param_adminname = $adminname;
+				$param_username = $username;
 				$param_password = password_hash($password, PASSWORD_DEFAULT); // Created a password
 
 				// Bind param variable to prepares statement
-				$stmt->bind_param('ss', $param_adminname, $param_password);
+				$stmt->bind_param('ss', $param_username, $param_password);
 
 				// Attempt to execute
 				if ($stmt->execute()) {
 					// Redirect to login page
-					header('location: ./adminlogin.php');
+					header('location: ./index.php');
 					// echo "Will  redirect to login page";
 				} else {
 					echo "Something went wrong. Try signing in again.";
@@ -113,7 +113,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-qdQEsAI45WFCO5QwXBelBe1rR9Nwiss4rGEqiszC+9olH1ScrLrMQr1KmDR964uZ" crossorigin="anonymous">
 	<style>
         .wrapper{ 
-        	wadminidth: 500px; 
+        	width: 500px; 
         	padding: 20px; 
         }
         .wrapper h2 {text-align: center}
@@ -126,21 +126,21 @@
 			<h2 class="display-4 pt-3">ADD USER</h2>
         	<p class="text-center">Please fill in NEW USER'S  credentials.</p>
         	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-        		<div class="form-group <?php (!empty($adminname_err))?'has_error':'';?>">
-        			<label for="adminname">Admin name</label>
-        			<input type="text" name="adminname" adminid="adminname" class="form-control" value="<?php echo $adminname ?>">
-        			<span class="help-block"><?php echo $adminname_err;?></span>
+        		<div class="form-group <?php (!empty($username_err))?'has_error':'';?>">
+        			<label for="username">user name</label>
+        			<input type="text" name="username" id="username" class="form-control" value="<?php echo $username ?>">
+        			<span class="help-block"><?php echo $username_err;?></span>
         		</div>
 
         		<div class="form-group <?php (!empty($password_err))?'has_error':'';?>">
         			<label for="password">Password</label>
-        			<input type="password" name="password" adminid="password" class="form-control" value="<?php echo $password ?>">
+        			<input type="password" name="password" id="password" class="form-control" value="<?php echo $password ?>">
         			<span class="help-block"><?php echo $password_err; ?></span>
         		</div>
 
         		<div class="form-group <?php (!empty($confirm_password_err))?'has_error':'';?>">
         			<label for="confirm_password">Confirm Password</label>
-        			<input type="password" name="confirm_password" adminid="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+        			<input type="password" name="confirm_password" id="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
         			<span class="help-block"><?php echo $confirm_password_err;?></span>
         		</div>
 
