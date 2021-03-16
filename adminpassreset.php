@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-qdQEsAI45WFCO5QwXBelBe1rR9Nwiss4rGEqiszC+9olH1ScrLrMQr1KmDR964uZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <style type="text/css">
         .wrapper{ 
             width: 500px; 
@@ -84,27 +84,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         .wrapper h2 {text-align: center}
         .wrapper form .form-group span {color: red;}
+        .cont{
+	border:1px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	margin-top:20px;
+	width:80vw;
+	margin:auto;
+	margin-top:7vh;
+	background:white;
+}
+body{
+	background:#b2d4d9;
+}
+.butt{
+    width:25vw;
+}
     </style>
 </head>
 <body>
-    <main class="container wrapper">
+    <main class="container wrapper cont">
         <section>
-            <h2>Reset Password</h2>
-            <p>Please fill out this form to reset your password.</p>
+            <h2><strong>Reset Password</strong></h2>
+            <p><center>Enter details to reset your password.</center></p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
                 <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
-                    <label>New Password</label>
+                    <label><b>New Password</b></label>
                     <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
                     <span class="help-block"><?php echo $new_password_err; ?></span>
                 </div>
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                    <label>Confirm Password</label>
+                    <label><b>Confirm Password</b></label>
                     <input type="password" name="confirm_password" class="form-control">
                     <span class="help-block"><?php echo $confirm_password_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-block btn-primary" value="Submit">
-                    <a class="btn btn-block btn-link bg-light" href="test.php">Cancel</a>
+                    <center><input type="submit" class="btn btn-primary butt" value="Submit"></center><br>
+                    <center><a class="btn butt btn-link bg-light" href="test.php">Cancel</a></center>
                 </div>
             </form>
         </section>
