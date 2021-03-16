@@ -23,7 +23,7 @@ if (mysqli_num_rows($result) > 0) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biomotion entries</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,8 +31,17 @@ if (mysqli_num_rows($result) > 0) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-.bs-example{
-margin: 20px;
+.cont{
+	border:2px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	background:white;
+}
+body{
+	background:#b2d4d9;
+}
+#button2{
+    height:55px;
+    width:250px;
 }
 </style>
 <script type="text/javascript">
@@ -45,21 +54,20 @@ $('[data-toggle="tooltip"]').tooltip();
 <div class="bs-example">
 <div class="container">
 <div class="row">
-<div class="col-md-12">
+<div >
 <div class="page-header clearfix">
-<h2 class="pull-left"><?php echo $a; ?>'s Entry List </h2>
+<h2 class="pull-left"><center><?php echo $a; ?>'s Entry List </center></h2>
 </div>
 
-
-<table class='table table-bordered table-striped'>
+<table class='table table-bordered cont'>
 <tr>
-<td>entry_id</td>
-<td>pid</td>
-<td>type</td>
-<td>entrytype</td>
-<td>amount</td>
-<td>description</td>
-<td>date</td>
+<th>entry_id</th>
+<th>pid</th>
+<th>type</th>
+<th>entrytype</th>
+<th>amount</th>
+<th>description</th>
+<th>date</th>
 </tr>
 <?php
 $i=0;
@@ -85,8 +93,8 @@ else{
 echo "No result found";
 }
 ?>
-<h5><a href="welcome.php"><br><br><br>
-<button  id="button2">GO TO DASHBOARD</button></a></h5>
+<h5><a href="welcome.php"><br>
+<center><button  id="button2" class="btn btn-danger"><center>GO TO DASHBOARD</center></button></center></a></h5>
 </div>
 </div>        
 </div>
