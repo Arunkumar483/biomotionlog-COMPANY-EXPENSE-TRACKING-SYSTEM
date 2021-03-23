@@ -98,40 +98,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign in</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-qdQEsAI45WFCO5QwXBelBe1rR9Nwiss4rGEqiszC+9olH1ScrLrMQr1KmDR964uZ" crossorigin="anonymous">
-  <style>
-    .wrapper{ 
-      width: 500px; 
-      padding: 20px; 
-    }
-    .wrapper h2 {text-align: center}
-    .wrapper form .form-group span {color: red;}
-    .cont{
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  ><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+	<style>
+        .wrapper{ 
+        	width: 400px; 
+        	padding: 50px; 
+        }
+        .wrapper h2 {text-align: center}
+        .wrapper form .form-group span {color: blue;}
+        .di{
+	text-align:center;
+	font-size:25px;
+}
+.cont{
 	border:1px solid black;
 	box-shadow: 0px 1px 2px 1px;
 	margin-top:20px;
 	width:80vw;
-	margin:auto;
-	margin-top:7vh;
 	background:white;
 }
-.butt{
-    width:25vw;
-}
 body{
-	background:#b2d4d9;
+  background:#b2d4d9;
 }
-  </style>
+        
+	</style>
 </head>
 <body>
   <main>
     <section class="container wrapper cont">
-      <h2 class="display-4 pt-3"><strong>Admin Login</strong></h2><br>
+      <h2 class="display-4 pt-3"><strong>Admin Login</strong></h2>
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group <?php (!empty($adminname_err))?'has_error':'';?>">
-              <label for="adminname"><b>adminname</b></label>
+              <label for="adminname"><b>Admin Name</b></label>
               <input type="text" name="adminname" id="adminname" class="form-control" value="<?php echo $adminname ?>">
               <span class="help-block"><?php echo $adminname_err;?></span>
             </div>
@@ -144,8 +144,8 @@ body{
 
             <div class="form-group">
               <center><input type="submit" class="btn btn-outline-primary butt" value="login"></center>
-            </div>
-            <p>Go to <a href="index.php">Home</a>.</p>
+            </div><HR>
+            <p>Go to <a href="index.php"><strong><u>Home</u></strong></a>.</p>
           </form>
     </section>
   </main>
