@@ -1,4 +1,13 @@
-<!DOCTYPE HTML>
+<?php
+	// Initialize session
+	session_start();
+
+	if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== false) {
+    	header('location: adminlogin.php');
+		exit;
+	}
+?>
+<!DOCTYPEHTML>
 <html> 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,7 +59,7 @@
                     <label class="col-lg-auto control-label">Type : </label>
                     <div class="col-lg-auto">
                         <select name="type" class="form-control">
-                            <option>Choose Type..</option>
+                            <option value="none" selected disabled hidden>Choose Type...</option>
                             <option value="Project Expense">Project Expense</option>
                             <option value="Project Advance">Project Advance</option>
                             <option value="Tour Advance">Tour Advance</option>
@@ -62,7 +71,7 @@
                     <label class="col-lg-auto control-label">Entry Type : </label>
                     <div class="col-lg-auto">
                         <select name="entrytype" class="form-control">
-                            <option>Choose Entry Type.. </option>
+                            <option value="none" selected disabled hidden>Choose Entry Type...</option>
                             <option value="Food">Food</option>
                             <option value="Installation">Installation</option>
                             <option value="Loading/Unloading">Loading/Unloading</option>
@@ -89,7 +98,8 @@
                     <label class="col-lg-auto control-label"></label>
                     <div class="col-lg-auto">
                        <input type="submit" name="submit" class="btn btn-primary"> 
-                       <button onClick="window.location.reload();" class="btn btn-primary">Display All Records</button>   
+                       <button onClick="window.location.reload();" class="btn btn-link">Display All Records</button>
+                       <a href="test.php">Go To Dashboard</a> 
                     </div>
                 </div>
             </form>
@@ -147,54 +157,76 @@
                     }       
                 }
                 else{
-                    $pid = $_POST['pid']; 
-                    $user = $_POST['user'];    
-                    $ftype = $_POST['type'];    
-                    $entrytype = $_POST['entrytype'];        
-                    $fdate = $_POST['fdate'];
-                    $tdate = $_POST['tdate'];
-                    $trdate = strtotime($tdate);
-                    $trdate = date("Y-m-d", $trdate);
-                    $frdate = strtotime($fdate);
-                    $frdate = date("Y-m-d", $frdate);
-
-                    if($pid != "" || $user != "" || $ftype != "" || $entrytype != "" || $frdate != "" || $trdate != ""){
-                        $query = "SELECT * FROM entry WHERE pid = '$pid' OR user = '$user' OR entrytype = '$entrytype' OR type = '$ftype' OR (date >= '$frdate' AND date <= '$trdate')";
-                        $data = mysqli_query($mysql_db, $query) or die('2 Error!');
-                        if(mysqli_num_rows($data) > 0){
-                            while($row = mysqli_fetch_assoc($data)){
-                                $entry_id = $row['entry_id'];
-                                $pid = $row['pid'];
-                                $user = $row['user'];    
-                                $ftype = $row['type'];    
-                                $entrytype = $row['entrytype']; 
-                                $amount = $row['amount'];
-                                $description = $row['description'];        
-                                $date = $row['date'];
-                            ?>
-                            <tr>
-                                <td><?php echo $entry_id;?></td>
-                                <td><?php echo $pid;?></td>
-                                <td><?php echo $user;?></td>
-                                <td><?php echo $ftype;?></td>
-                                <td><?php echo $entrytype;?></td>
-                                <td><?php echo $amount;?></td>
-                                <td><?php echo $description;?></td>
-                                <td><?php echo $date;?></td>
-                            </tr>
-                            <?php                               
-                            }
+                        $pid = $_POST['pid'];
+                        $user = $_POST['user'];
+                        $type = $_POST['type'] ?? "";
+                        $entrytype = $_POST['entrytype'] ?? "";
+                        $fdate = $_POST['fdate'];
+                        $tdate = $_POST['tdate'];
+                        $trdate = null;
+                        $frdate = null;
+                        if($trdate = strtotime($tdate)){
+                            $trdate = date("Y-m-d", $trdate);
                         }
-                        else{
-                            ?>
-                            <tr>
-                                <td>Records Not Found!</td>
-                            </tr>
-                            <?php
-                        }       
+                        if($frdate = strtotime($fdate)){
+                            $frdate = date("Y-m-d", $frdate);
+                        }                   
+                        $query  = "SELECT * FROM entry WHERE 1=1 ";
+                    
+                        if($pid != "") {
+                            $query .= " AND pid ='$pid'";
+                        }
+                        if($user != "") {
+                            $query .= " AND user='$user'";
+                        }
+                        if($type != "") {
+                            $query .= " AND type='$type'";
+                        }
+                        if($entrytype != "") {
+                            $query .= " AND entrytype='$entrytype'";
+                        }
+                        if($frdate != "") {
+                            $query .= " AND date>='$frdate'";
+                        }
+                        if($trdate != "") {
+                            $query .= " AND date<='$trdate'";
+                        }
+                        $query;
+                        $data = mysqli_query($mysql_db, $query) or die('1 Error!');
+                    }   
+                    if(mysqli_num_rows($data) > 0){
+                        while($row = mysqli_fetch_assoc($data)){
+                            $entry_id = $row['entry_id'];
+                            $pid = $row['pid'];
+                            $user = $row['user'];    
+                            $ftype = $row['type'];    
+                            $entrytype = $row['entrytype']; 
+                            $amount = $row['amount'];
+                            $description = $row['description'];        
+                            $date = $row['date'];
+                        ?>
+                        <tr>
+                            <td><?php echo $entry_id;?></td>
+                            <td><?php echo $pid;?></td>
+                            <td><?php echo $user;?></td>
+                            <td><?php echo $ftype;?></td>
+                            <td><?php echo $entrytype;?></td>
+                            <td><?php echo $amount;?></td>
+                            <td><?php echo $description;?></td>
+                            <td><?php echo $date;?></td>
+                        </tr>
+                        <?php                               
+                        }
                     }
-                }
-                ?>
+                    else{
+                        ?>
+                        <tr>
+                            <td>Records Not Found!</td>
+                        </tr>
+                        <?php
+                        }       
+ 
+                ?>    
             </tbody>
             </table>
         </div>
