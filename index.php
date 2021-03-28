@@ -93,20 +93,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign in</title><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/journal/bootstrap.min.css" integrity="sha384-QDSPDoVOoSWz2ypaRUidLmLYl4RyoBWI44iA5agn6jHegBxZkNqgm2eHb6yZ5bYs" crossorigin="anonymous"><style>
-    .wrapper{ 
-      width: 500px; 
-      padding: 20px; 
-    }
-    .wrapper h2 {text-align: center}
-    .wrapper form .form-group span {color: red;}
-  </style>
+  <title>Sign in</title><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+	<style>
+        .wrapper{ 
+        	width: 400px; 
+        	padding: 50px; 
+        }
+        .wrapper h3 {text-align: center}
+        .wrapper form .form-group span {color: blue;}
+        .di{
+	text-align:center;
+	font-size:25px;
+}
+.cont{
+	border:1px solid black;
+	box-shadow: 0px 1px 2px 1px;
+	margin-top:20px;
+	width:80vw;
+	background:white;
+}
+body{
+  background:#b2d4d9;
+}
+        
+	</style>
 </head>
 <body>
   <main>
-    <section class="container wrapper">
-      <h2 class="display-4 pt-3">Login</h2>
-          <p class="text-center">Please fill this form to create an account.</p>
+    <section class="container wrapper cont">
+      <h3 class="display-4 pt-3">BiOM LOG</h3>
+          
+          <p class="text-center">- A BioMotion Enterprise</p>
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group <?php (!empty($username_err))?'has_error':'';?>">
               <label for="username">Username</label>
@@ -122,8 +139,7 @@
 
             <div class="form-group">
               <input type="submit" class="btn btn-block btn-outline-primary" value="login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign in</a>.</p>
+            </div><hr>
             <p>Are you an admin? <a href="adminlogin.php">Admin Login</a>.</p>
           </form>
     </section>
