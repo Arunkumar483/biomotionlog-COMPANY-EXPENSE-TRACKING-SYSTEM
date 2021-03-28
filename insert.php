@@ -54,7 +54,7 @@ if(isset($_POST['submit']))
      VALUES ('$pid','$user','$type','$amount','$description','$entrytype')");
      if(!$insert)
     {
-        echo mysqli_error();
+        echo "<h2><strong><U>FILL ALL FIELDS CORRECTLY AND RETRY.THE DATA ENTRY IS NOT SUBMITTED!</U></h2></strong>";
     }
     else
     {   echo "<br>";
@@ -69,7 +69,7 @@ if(isset($_POST['submit']))
 <br><br>
 <h5>Filled all entries?<a href="welcome.php"><br><br>
 <button class="btn btn-success" id="button2">GO TO DASHBOARD</button></a></h5><br><br>
-<h5>Filled all entries?<a href="logout.php"><br><br><br>
+<h5>LOG OUT?<a href="logout.php"><br><br><br>
 <button class="btn btn-danger" id="button3">LOG OUT</button></a></h5><br><br></div>
 
 </html>
