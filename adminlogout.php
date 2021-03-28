@@ -1,5 +1,5 @@
 <?php
-	// Start sessions
+	// Start sessions!
 	session_start();
 
 	$_SESSION  = array();
