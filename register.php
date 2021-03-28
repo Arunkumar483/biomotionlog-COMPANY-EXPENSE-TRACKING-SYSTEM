@@ -1,4 +1,12 @@
 <?php
+session_start();
+ 
+// Check if the user is logged in, if not then redirect to login page
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+    header('location: test.php');
+    exit;
+}?>
+<?php
 	// Include config file
 	require_once 'config/config.php';
 
@@ -90,7 +98,7 @@
 				// Attempt to execute
 				if ($stmt->execute()) {
 					// Redirect to login page
-					header('location: test.php');
+					header('location: ./index.php');
 					// echo "Will  redirect to login page";
 				} else {
 					echo "Something went wrong. Try signing in again.";
@@ -108,9 +116,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=0.8">
 	<title>Sign in</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous"><style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous"><style>
        .cont{
 	border:1px solid black;
 	box-shadow: 0px 1px 2px 1px;
@@ -132,12 +140,12 @@ body{
 </head>
 <body>
 	<main>
-		<section class="container wrapper cont">
-			<h2 class="display-4 pt-3">Sign Up</h2>
-        	<p class="text-center">Please fill in your credentials.</p>
+		<section class="container wrapper cont ">
+			<h2 class="display-4 pt-3">ADD USER</h2>
+        	<p class="text-center">Please fill in NEW USER'S  credentials.</p>
         	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
         		<div class="form-group <?php (!empty($username_err))?'has_error':'';?>">
-        			<label for="username">Username</label>
+        			<label for="username">user name</label>
         			<input type="text" name="username" id="username" class="form-control" value="<?php echo $username ?>">
         			<span class="help-block"><?php echo $username_err;?></span>
         		</div>
@@ -157,7 +165,10 @@ body{
         		<div class="form-group">
         			<input type="submit" class="btn btn-block btn-outline-success" value="Submit">
         			<input type="reset" class="btn btn-block btn-outline-primary" value="Reset">
+        			<hr>
+        			<a href="test.php" class="btn btn-block btn-outline-primary">GO TO ADMIN DASHBOARD</a>
         		</div>
+        		
         	</form>
 		</section>
 	</main>
