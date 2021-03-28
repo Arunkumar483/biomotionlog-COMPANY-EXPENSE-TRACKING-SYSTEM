@@ -15,7 +15,7 @@
 	<style>
         .wrapper{ 
         	width: 500px; 
-        	padding: 100px; 
+        	padding: 40px; 
         }
         .wrapper h2 {text-align: center}
         .wrapper form .form-group span {color: blue;}
@@ -42,9 +42,17 @@ body{
 				<h4 class="display-5">Welcome home admin <h3><?php echo $_SESSION['adminname']; ?></h3></h4>
 			</div>
 
-			<a href="adminpassreset.php" class="btn btn-block btn-outline-danger">Reset Password</a>
+			
+			<!--<a href="register.php" class="btn btn-block btn-outline-danger">ADD USER</a>
+			<a href="adminsignup.php" class="btn btn-block btn-outline-danger">ADD ADMIN</a>-->
 			<a href="register.php" class="btn btn-block btn-outline-danger">ADD USER</a>
+			<a href="adminsignup.php" class="btn btn-block btn-outline-danger">ADD ADMIN</a>
+			<a href="filter.php" class="btn btn-block btn-outline-danger">Manage Entry</a>
+			<a href="newadmin.php" class="btn btn-block btn-outline-danger">Manage Project</a>
+			<a href="index2.php" class="btn btn-block btn-outline-danger">Query/Chatbox</a>
+			<a href="adminpassreset.php" class="btn btn-block btn-outline-danger">Reset Password</a>
 			<a href="adminlogout.php" class="btn btn-block btn-outline-danger">Sign Out</a>
+			
 			
 		</section>
 	</main>
