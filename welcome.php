@@ -4,6 +4,7 @@
 
 	if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] !== false) {
 		header('location: index.php');
+		echo "<h2>Hello we cannot recognize u kindly go to login page and login again<br></h2>";
 		exit;
 	}
 ?>
@@ -45,9 +46,11 @@
 			</div>
 			<a href="submit.php" class="btn btn-block btn-outline-danger">ADD DATA ENTRY</a>
 			<a href="fetchdisplay.php" class="btn btn-block btn-outline-danger">VIEW MY ENTRIES</a>
-			<a href="query123.php" class="btn btn-block btn-outline-danger">Other queries</a>
+			<a href="index2.php" class="btn btn-block btn-outline-danger">QUERY BOX</a>
+			<a href="search.php" class="btn btn-block btn-outline-danger">REFER PROJECT DETAILS</a>
 			<a href="password_reset.php" class="btn btn-block btn-outline-danger">Reset Password</a>
-			<a href="logout.php" class="btn btn-block btn-outline-danger">Sign Out</a>
+			<a href="logout.php" class="btn btn-block btn-outline-danger">Sign Out</a>	
+			
 			<br>
 			<br>
 			
