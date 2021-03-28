@@ -11,12 +11,28 @@
 <html> 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Filters</title>
+    <title>Filters</title><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="js3/jquery.min.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css"><script src=
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+    </script>
+  
+    <!-- Include locally otherwise -->
+    <!-- <script src='html2canvas.js'></script> -->
+  
+    <style>
+        #photo {
+            border: 1px solid green;
+            padding: 1px;
+        }
+        #b2{
+            margin:auto;
+        }
+    </style>
     <script type="text/javascript">
         $( function() {
             $( "#tdate" ).datepicker();
@@ -44,19 +60,19 @@
         <div class="row">
             <form class="form-horizontal" action="filter.php" method="POST">
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">Project ID : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">Project ID : </label>
                     <div class="col-lg-auto">
-                        <input type="text" class="form-control" name="pid" placeholder="Enter Project ID..">
+                        <input type="text" class="form-control" name="pid" placeholder="Enter Project ID.."> 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">User : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">User : </label>
                     <div class="col-lg-auto">
                         <input type="text" class="form-control" name="user" placeholder="Enter User..">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">Type : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">Type : </label>
                     <div class="col-lg-auto">
                         <select name="type" class="form-control">
                             <option value="none" selected disabled hidden>Choose Type...</option>
@@ -68,7 +84,7 @@
                     </div>
                 </div> 
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">Entry Type : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">Entry Type : </label>
                     <div class="col-lg-auto">
                         <select name="entrytype" class="form-control">
                             <option value="none" selected disabled hidden>Choose Entry Type...</option>
@@ -82,13 +98,13 @@
                     </div>
                 </div>   
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">From Date : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">From Date : </label>
                     <div class="col-lg-auto">
                        <input type="text" name="fdate" id="fdate" class="form-control">    
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-auto control-label">To Date : </label>
+                    <label class="col-lg-auto control-label" style="text-align: center; font-weight: bold;">To Date : </label>
                     <div class="col-lg-auto">
                        <input type="text" name="tdate" id="tdate" class="form-control">    
                     </div>
@@ -104,7 +120,7 @@
                 </div>
             </form>
         </div>
-        <div class="row">
+        <div class="row" id="ak">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -226,10 +242,37 @@
                         <?php
                         }       
  
-                ?>    
+                ?> 
+            <button id ="b2" class="btn btn-primary" text align:center onclick="takeshot()">Take Screenshot</button>
             </tbody>
             </table>
         </div>
+        <hr><hr><hr><div id="output"></div>
+  
+    <script type="text/javascript">
+  
+        // Define the function 
+        // to screenshot the div
+        function takeshot() {
+            let div =
+                document.getElementById('ak');
+  
+            // Use the html2canvas
+            // function to take a screenshot
+            // and append it
+            // to the output div
+            html2canvas(div).then(
+                function (canvas) {
+                    document
+                    .getElementById('output')
+                    .appendChild(canvas);
+                })
+        }
+    </script>
+        
+        
 </div>
+
+</script>
 </body>
 </html>
