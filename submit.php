@@ -7,7 +7,7 @@
 		exit;
 	}
 	$a=$_SESSION['username'];
-	echo $a;
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,17 +19,28 @@
         .wrapper{
             width: 500px;
             margin: 0 auto;
+            text-align:center;
         }
+        body{
+  background:#80ccff;
+}
+        .cont{
+    border:1px solid black;
+    box-shadow: 0px 1px 2px 1px;
+    margin-top:20px;
+    width:80vw;
+    background:white;
+     }
        
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper cont">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Expenses/Advances Entry Form</h2>
+                        <h2>Expenses / Advances Entry Form</h2>
                     </div>
                     <p>Please fill this form and submit to add EXP/ADV record to the database.</p>
                     <form action="insert.php" method="post">
@@ -40,7 +51,7 @@
                         <div class="form-group" >
                             <label>TYPE</label>
                             <br>
-                            <select name="type" id="type"  style="width:500px;">
+                            <select name="type" id="type"  style="width:70vw;">
                                 <option value="Project Expense">Project Expense</option>
                                 <option value="Project Advance">Project Advance</option>
                                 <option value="Tour Expense">Tour Expense</option>
@@ -51,7 +62,7 @@
                         <div class="form-group" >
                             <label>ENTRY TYPE</label>
                             <br>
-                            <select name="entrytype" id="entrytype"  style="width:500px;">
+                            <select name="entrytype" id="entrytype"  style="width:70vw;">
                                 <option value="Travel">Travel</option>
                                 <option value="Installation">Installation</option>
                                 <option value="Food">Food</option>
@@ -62,11 +73,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Amount</label>
+                            <label>AMOUNT</label>
                             <input type="number" name="amount" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>DESCRIPTION</label>
                             <input type="text" name="description" class="form-control">
                         </div>
                         <div class="form-group">
@@ -76,7 +87,10 @@
                             
                         </div>
                         <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+                        <hr><a href="welcome.php">
+                        <button class="btn btn-success" id="button2">GO TO DASHBOARD</button></a>
                     </form>
+                    <br/>
                 </div>
             </div>        
         </div>
