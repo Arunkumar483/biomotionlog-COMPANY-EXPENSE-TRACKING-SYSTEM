@@ -98,7 +98,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 				// Attempt to execute
 				if ($stmt->execute()) {
 					// Redirect to login page
-					header('location: ./index.php');
+					header('location: ./adminlogin.php');
 					// echo "Will  redirect to login page";
 				} else {
 					echo "Something went wrong. Try signing in again.";
@@ -174,3 +174,4 @@ body{
 	</main>
 </body>
 </html>
+
