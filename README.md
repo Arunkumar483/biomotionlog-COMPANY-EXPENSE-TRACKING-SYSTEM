@@ -1,7 +1,7 @@
 
 INTRODUCTION
 
-This Project deals with the Project's tour expenses and advances log of Bio-motion Employees.
+This Project deals with the Project's Expenses and Advances log of Bio-motion Employees.
 
 With the Implementation of sessions and credential encryption,Bio-motion site engineers and admins can easily manage their data entries and logs through this system.
 
